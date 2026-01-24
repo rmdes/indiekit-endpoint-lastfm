@@ -1,0 +1,54 @@
+{
+  "name": "@rmdes/indiekit-endpoint-lastfm",
+  "version": "1.0.0",
+  "description": "Last.fm scrobble and listening activity endpoint for Indiekit. Display listening history, loved tracks, and statistics.",
+  "keywords": [
+    "indiekit",
+    "indiekit-plugin",
+    "indieweb",
+    "lastfm",
+    "last.fm",
+    "music",
+    "scrobble",
+    "listening",
+    "activity"
+  ],
+  "homepage": "https://github.com/rmdes/indiekit-endpoint-lastfm",
+  "bugs": {
+    "url": "https://github.com/rmdes/indiekit-endpoint-lastfm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmdes/indiekit-endpoint-lastfm.git"
+  },
+  "author": {
+    "name": "Ricardo Mendes",
+    "url": "https://rmendes.net"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "includes",
+    "lib",
+    "locales",
+    "views",
+    "index.js"
+  ],
+  "dependencies": {
+    "@indiekit/error": "^1.0.0-beta.25",
+    "express": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@indiekit/indiekit": ">=1.0.0-beta.25"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

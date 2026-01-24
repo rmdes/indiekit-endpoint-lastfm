@@ -1,0 +1,12 @@
+{% call widget({
+  title: __("lastfm.title")
+}) %}
+  <p class="prose">{{ __("lastfm.widget.description") }}</p>
+  <div class="button-grid">
+    {{ button({
+      classes: "button--secondary-on-offset",
+      href: application.lastfmEndpoint or "/lastfm",
+      text: __("lastfm.widget.view")
+    }) }}
+  </div>
+{% endcall %}

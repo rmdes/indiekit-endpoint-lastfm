@@ -1,0 +1,75 @@
+{#
+  Stats Widget
+  Fetches data from /lastfm/api/stats
+  Include this in your Eleventy templates for a sidebar widget
+#}
+<div class="lastfm-stats-widget" id="lastfm-stats">
+  <div class="lastfm-stats-widget__loading">
+    Loading stats...
+  </div>
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById('lastfm-stats');
+  const endpoint = '{{ application.lastfmEndpoint or "/lastfm" }}/api/stats';
+
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      container.textContent = '';
+      const all = data.summary?.all || {};
+
+      const grid = document.createElement('div');
+      grid.className = 'lastfm-stats-widget__grid';
+
+      // Plays stat
+      const playsStat = document.createElement('div');
+      playsStat.className = 'lastfm-stats-widget__stat';
+      const playsValue = document.createElement('span');
+      playsValue.className = 'lastfm-stats-widget__value';
+      playsValue.textContent = all.totalPlays || 0;
+      const playsLabel = document.createElement('span');
+      playsLabel.className = 'lastfm-stats-widget__label';
+      playsLabel.textContent = 'scrobbles';
+      playsStat.appendChild(playsValue);
+      playsStat.appendChild(playsLabel);
+      grid.appendChild(playsStat);
+
+      // Artists stat
+      const artistsStat = document.createElement('div');
+      artistsStat.className = 'lastfm-stats-widget__stat';
+      const artistsValue = document.createElement('span');
+      artistsValue.className = 'lastfm-stats-widget__value';
+      artistsValue.textContent = all.uniqueArtists || 0;
+      const artistsLabel = document.createElement('span');
+      artistsLabel.className = 'lastfm-stats-widget__label';
+      artistsLabel.textContent = 'artists';
+      artistsStat.appendChild(artistsValue);
+      artistsStat.appendChild(artistsLabel);
+      grid.appendChild(artistsStat);
+
+      // Loved stat
+      const lovedStat = document.createElement('div');
+      lovedStat.className = 'lastfm-stats-widget__stat';
+      const lovedValue = document.createElement('span');
+      lovedValue.className = 'lastfm-stats-widget__value';
+      lovedValue.textContent = all.lovedCount || 0;
+      const lovedLabel = document.createElement('span');
+      lovedLabel.className = 'lastfm-stats-widget__label';
+      lovedLabel.textContent = 'loved';
+      lovedStat.appendChild(lovedValue);
+      lovedStat.appendChild(lovedLabel);
+      grid.appendChild(lovedStat);
+
+      container.appendChild(grid);
+    })
+    .catch(err => {
+      container.textContent = '';
+      const error = document.createElement('p');
+      error.className = 'lastfm-widget__error';
+      error.textContent = 'Could not load stats';
+      container.appendChild(error);
+    });
+})();
+</script>

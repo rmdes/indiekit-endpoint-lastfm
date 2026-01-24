@@ -1,0 +1,295 @@
+{% extends "document.njk" %}
+
+{% block content %}
+  <style>
+    /* Inline styles to ensure proper rendering */
+    .lfm-section { margin-bottom: 2rem; }
+    .lfm-section h2 { margin-bottom: 1rem; }
+
+    /* Stats grid */
+    .lfm-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .lfm-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      background: var(--color-offset, #f5f5f5);
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+    .lfm-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-accent, #d51007);
+    }
+    .lfm-stat-label {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary, #666);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Featured track */
+    .lfm-featured {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--color-offset, #f5f5f5);
+      border-radius: 0.5rem;
+      align-items: flex-start;
+    }
+    .lfm-featured img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 0.25rem;
+      flex-shrink: 0;
+    }
+    .lfm-featured-info { flex: 1; }
+    .lfm-featured-title {
+      font-weight: 600;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .lfm-featured-title:hover { text-decoration: underline; }
+    .lfm-featured-album {
+      margin: 0.25rem 0;
+      color: var(--color-text-secondary, #666);
+      font-size: 0.875rem;
+    }
+    .lfm-meta {
+      display: flex;
+      gap: 0.5rem;
+      color: var(--color-text-secondary, #666);
+      font-size: 0.75rem;
+    }
+
+    /* Now playing animation */
+    .lfm-playing-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #d51007;
+    }
+    .lfm-bars {
+      display: flex;
+      gap: 2px;
+      align-items: flex-end;
+      height: 16px;
+    }
+    .lfm-bars span {
+      width: 3px;
+      background: currentColor;
+      animation: lfm-bar 0.5s infinite ease-in-out alternate;
+    }
+    .lfm-bars span:nth-child(2) { animation-delay: 0.2s; }
+    .lfm-bars span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes lfm-bar {
+      from { height: 4px; }
+      to { height: 16px; }
+    }
+
+    /* Loved indicator */
+    .lfm-loved {
+      color: #d51007;
+      font-size: 0.875rem;
+    }
+
+    /* List */
+    .lfm-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+    }
+    .lfm-list-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--color-border, #eee);
+    }
+    .lfm-list-item:last-child { border-bottom: none; }
+    .lfm-list-item img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 0.25rem;
+      flex-shrink: 0;
+    }
+    .lfm-list-item-placeholder {
+      width: 48px;
+      height: 48px;
+      background: var(--color-border, #ddd);
+      border-radius: 0.25rem;
+      flex-shrink: 0;
+    }
+    .lfm-list-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .lfm-list-title {
+      display: block;
+      font-weight: 500;
+      text-decoration: none;
+      color: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lfm-list-title:hover { text-decoration: underline; }
+
+    /* Public link banner */
+    .lfm-public-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: var(--color-offset, #f5f5f5);
+      border-radius: 0.5rem;
+      margin-top: 2rem;
+    }
+    .lfm-public-link p {
+      margin: 0;
+      color: var(--color-text-secondary, #666);
+    }
+  </style>
+
+  {% if error %}
+    {{ prose({ text: error.message }) }}
+  {% else %}
+    {# Now Playing / Recently Played #}
+    {% if nowPlaying %}
+    <section class="lfm-section">
+      <h2>
+        {% if nowPlaying.status == "now-playing" %}
+          <span class="lfm-playing-status">
+            <span class="lfm-bars">
+              <span></span><span></span><span></span>
+            </span>
+            {{ __("lastfm.nowPlaying") }}
+          </span>
+        {% else %}
+          {{ __("lastfm.recentlyPlayed") }}
+        {% endif %}
+      </h2>
+      <article class="lfm-featured">
+        {% if nowPlaying.coverUrl %}
+        <img src="{{ nowPlaying.coverUrl }}" alt="" loading="lazy">
+        {% endif %}
+        <div class="lfm-featured-info">
+          <a href="{{ nowPlaying.trackUrl }}" class="lfm-featured-title" target="_blank" rel="noopener">
+            {{ nowPlaying.artist }} - {{ nowPlaying.track }}
+          </a>
+          {% if nowPlaying.album %}
+          <p class="lfm-featured-album">{{ nowPlaying.album }}</p>
+          {% endif %}
+          <small class="lfm-meta">
+            {% if nowPlaying.loved %}<span class="lfm-loved">&#9829;</span>{% endif %}
+            <span>{{ nowPlaying.relativeTime }}</span>
+          </small>
+        </div>
+      </article>
+    </section>
+    {% endif %}
+
+    {# Quick Stats Summary #}
+    {% if hasStats %}
+    <section class="lfm-section">
+      <h2>{{ __("lastfm.stats") }}</h2>
+      <div class="lfm-stats-grid">
+        <div class="lfm-stat">
+          <span class="lfm-stat-value">{{ totalPlays }}</span>
+          <span class="lfm-stat-label">{{ __("lastfm.plays") }}</span>
+        </div>
+        <div class="lfm-stat">
+          <span class="lfm-stat-value">{{ uniqueTracks }}</span>
+          <span class="lfm-stat-label">{{ __("lastfm.tracks") }}</span>
+        </div>
+        <div class="lfm-stat">
+          <span class="lfm-stat-value">{{ uniqueArtists }}</span>
+          <span class="lfm-stat-label">{{ __("lastfm.artists") }}</span>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {# Recent Scrobbles #}
+    <section class="lfm-section">
+      <h2>{{ __("lastfm.scrobbles") }}</h2>
+      {% if scrobbles and scrobbles.length > 0 %}
+      <ul class="lfm-list">
+        {% for scrobble in scrobbles %}
+        <li class="lfm-list-item">
+          {% if scrobble.coverUrl %}
+          <img src="{{ scrobble.coverUrl }}" alt="" loading="lazy">
+          {% else %}
+          <div class="lfm-list-item-placeholder"></div>
+          {% endif %}
+          <div class="lfm-list-info">
+            <a href="{{ scrobble.trackUrl }}" class="lfm-list-title" target="_blank" rel="noopener">
+              {{ scrobble.artist }} - {{ scrobble.track }}
+            </a>
+            <small class="lfm-meta">
+              {% if scrobble.loved %}<span class="lfm-loved">&#9829;</span>{% endif %}
+              {{ scrobble.relativeTime }}
+            </small>
+          </div>
+          {% if scrobble.status == "now-playing" %}
+          {{ badge({ color: "red", text: __("lastfm.nowPlaying") }) }}
+          {% elif scrobble.status == "recently-played" %}
+          {{ badge({ color: "blue", text: __("lastfm.recentlyPlayed") }) }}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      {{ prose({ text: __("lastfm.noRecentPlays") }) }}
+      {% endif %}
+    </section>
+
+    {# Loved Tracks #}
+    <section class="lfm-section">
+      <h2>{{ __("lastfm.loved") }}</h2>
+      {% if lovedTracks and lovedTracks.length > 0 %}
+      <ul class="lfm-list">
+        {% for track in lovedTracks %}
+        <li class="lfm-list-item">
+          {% if track.coverUrl %}
+          <img src="{{ track.coverUrl }}" alt="" loading="lazy">
+          {% else %}
+          <div class="lfm-list-item-placeholder"></div>
+          {% endif %}
+          <div class="lfm-list-info">
+            <a href="{{ track.trackUrl }}" class="lfm-list-title" target="_blank" rel="noopener">
+              {{ track.artist }} - {{ track.track }}
+            </a>
+            <small class="lfm-meta">
+              <span class="lfm-loved">&#9829;</span>
+              {{ track.relativeTime }}
+            </small>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      {{ prose({ text: __("lastfm.noLoved") }) }}
+      {% endif %}
+    </section>
+
+    {# Link to public page #}
+    <div class="lfm-public-link">
+      <p>{{ __("lastfm.widget.description") }}</p>
+      {{ button({
+        href: publicUrl,
+        text: __("lastfm.widget.view"),
+        target: "_blank"
+      }) }}
+    </div>
+  {% endif %}
+{% endblock %}

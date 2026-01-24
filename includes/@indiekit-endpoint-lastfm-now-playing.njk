@@ -1,0 +1,90 @@
+{#
+  Now Playing Widget
+  Fetches data from /lastfm/api/now-playing
+  Include this in your Eleventy templates
+#}
+<div class="lastfm-now-playing-widget" id="lastfm-now-playing">
+  <div class="lastfm-now-playing-widget__loading">
+    Loading...
+  </div>
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById('lastfm-now-playing');
+  const endpoint = '{{ application.lastfmEndpoint or "/lastfm" }}/api/now-playing';
+
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      container.textContent = '';
+
+      if (!data.track) {
+        const empty = document.createElement('p');
+        empty.className = 'lastfm-widget__empty';
+        empty.textContent = 'No recent plays';
+        container.appendChild(empty);
+        return;
+      }
+
+      const widget = document.createElement('div');
+      widget.className = 'lastfm-widget' + (data.status === 'now-playing' ? ' lastfm-widget--playing' : '');
+
+      if (data.status === 'now-playing') {
+        const bars = document.createElement('div');
+        bars.className = 'lastfm-bars';
+        for (let i = 0; i < 3; i++) {
+          bars.appendChild(document.createElement('span'));
+        }
+        widget.appendChild(bars);
+      }
+
+      const status = document.createElement('span');
+      status.className = 'lastfm-widget__status';
+      status.textContent = data.status === 'now-playing' ? 'Now Playing' :
+                           data.status === 'recently-played' ? 'Recently Played' : 'Last Played';
+      widget.appendChild(status);
+
+      if (data.coverUrl) {
+        const img = document.createElement('img');
+        img.src = data.coverUrl;
+        img.alt = '';
+        img.className = 'lastfm-widget__cover';
+        widget.appendChild(img);
+      }
+
+      const info = document.createElement('div');
+      info.className = 'lastfm-widget__info';
+
+      const link = document.createElement('a');
+      link.href = data.trackUrl;
+      link.className = 'lastfm-widget__title';
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = data.artist + ' - ' + data.track;
+      info.appendChild(link);
+
+      if (data.loved) {
+        const heart = document.createElement('span');
+        heart.className = 'lastfm-widget__loved';
+        heart.textContent = ' \u2665';
+        link.appendChild(heart);
+      }
+
+      const time = document.createElement('span');
+      time.className = 'lastfm-widget__time';
+      time.textContent = data.relativeTime;
+      info.appendChild(time);
+
+      widget.appendChild(info);
+      container.appendChild(widget);
+    })
+    .catch(err => {
+      container.textContent = '';
+      const error = document.createElement('p');
+      error.className = 'lastfm-widget__error';
+      error.textContent = 'Could not load';
+      container.appendChild(error);
+    });
+})();
+</script>
