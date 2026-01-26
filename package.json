@@ -1,6 +1,6 @@
 {
   "name": "@rmdes/indiekit-endpoint-lastfm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Last.fm scrobble and listening activity endpoint for Indiekit. Display listening history, loved tracks, and statistics.",
   "keywords": [
     "indiekit",
