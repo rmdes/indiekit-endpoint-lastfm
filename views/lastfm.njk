@@ -1,168 +1,281 @@
 {% extends "document.njk" %}
 
 {% block content %}
-  <style>
-    /* Inline styles to ensure proper rendering */
-    .lfm-section { margin-bottom: 2rem; }
-    .lfm-section h2 { margin-bottom: 1rem; }
+<style>
+  .lfm-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl, 2rem);
+  }
 
-    /* Stats grid */
-    .lfm-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .lfm-stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      background: var(--color-offset, #f5f5f5);
-      border-radius: 0.5rem;
-      text-align: center;
-    }
-    .lfm-stat-value {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--color-accent, #d51007);
-    }
-    .lfm-stat-label {
-      font-size: 0.75rem;
-      color: var(--color-text-secondary, #666);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+  .lfm-section {
+    background: var(--color-offset, #f5f5f5);
+    border-radius: var(--border-radius-small, 0.5rem);
+    padding: var(--space-m, 1.5rem);
+  }
 
-    /* Featured track */
-    .lfm-featured {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem;
-      background: var(--color-offset, #f5f5f5);
-      border-radius: 0.5rem;
-      align-items: flex-start;
-    }
-    .lfm-featured img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 0.25rem;
-      flex-shrink: 0;
-    }
-    .lfm-featured-info { flex: 1; }
-    .lfm-featured-title {
-      font-weight: 600;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    .lfm-featured-title:hover { text-decoration: underline; }
-    .lfm-featured-album {
-      margin: 0.25rem 0;
-      color: var(--color-text-secondary, #666);
-      font-size: 0.875rem;
-    }
-    .lfm-meta {
-      display: flex;
-      gap: 0.5rem;
-      color: var(--color-text-secondary, #666);
-      font-size: 0.75rem;
-    }
+  .lfm-section h2 {
+    font: var(--font-heading, bold 1.25rem/1.4 sans-serif);
+    margin-block-end: var(--space-s, 0.75rem);
+    padding-block-end: var(--space-xs, 0.5rem);
+    border-block-end: 1px solid var(--color-outline-variant, #ddd);
+  }
 
-    /* Now playing animation */
-    .lfm-playing-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #d51007;
-    }
-    .lfm-bars {
-      display: flex;
-      gap: 2px;
-      align-items: flex-end;
-      height: 16px;
-    }
-    .lfm-bars span {
-      width: 3px;
-      background: currentColor;
-      animation: lfm-bar 0.5s infinite ease-in-out alternate;
-    }
-    .lfm-bars span:nth-child(2) { animation-delay: 0.2s; }
-    .lfm-bars span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes lfm-bar {
-      from { height: 4px; }
-      to { height: 16px; }
-    }
+  .lfm-section p.lfm-hint {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+    margin-block-end: var(--space-m, 1rem);
+  }
 
-    /* Loved indicator */
-    .lfm-loved {
-      color: #d51007;
-      font-size: 0.875rem;
-    }
+  /* Notifications */
+  .lfm-notification {
+    border-radius: var(--border-radius-small, 0.25rem);
+    padding: var(--space-s, 0.75rem) var(--space-m, 1rem);
+    margin-block-end: var(--space-s, 0.75rem);
+  }
+  .lfm-notification--success {
+    background: var(--color-success, #d4edda);
+    color: var(--color-on-success, #155724);
+  }
+  .lfm-notification--error {
+    background: var(--color-error, #f8d7da);
+    color: var(--color-on-error, #721c24);
+  }
 
-    /* List */
-    .lfm-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1rem 0;
-    }
-    .lfm-list-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--color-border, #eee);
-    }
-    .lfm-list-item:last-child { border-bottom: none; }
-    .lfm-list-item img {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
-      border-radius: 0.25rem;
-      flex-shrink: 0;
-    }
-    .lfm-list-item-placeholder {
-      width: 48px;
-      height: 48px;
-      background: var(--color-border, #ddd);
-      border-radius: 0.25rem;
-      flex-shrink: 0;
-    }
-    .lfm-list-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .lfm-list-title {
-      display: block;
-      font-weight: 500;
-      text-decoration: none;
-      color: inherit;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .lfm-list-title:hover { text-decoration: underline; }
+  /* Settings form */
+  .lfm-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m, 1rem);
+  }
+  .lfm-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs, 0.25rem);
+  }
+  .lfm-field label {
+    font: var(--font-label, bold 0.875rem/1.4 sans-serif);
+  }
+  .lfm-field .lfm-field-hint {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+  }
+  .lfm-field input {
+    appearance: none;
+    background-color: var(--color-background, #fff);
+    border: 1px solid var(--color-outline-variant, #ccc);
+    border-radius: var(--border-radius-small, 0.25rem);
+    font: var(--font-body, 0.875rem/1.4 sans-serif);
+    padding: calc(var(--space-s, 0.75rem) / 2) var(--space-s, 0.75rem);
+    width: 100%;
+  }
+  .lfm-field input:focus {
+    border-color: var(--color-primary, #0066cc);
+    outline: 2px solid var(--color-primary, #0066cc);
+    outline-offset: 1px;
+  }
 
-    /* Public link banner */
-    .lfm-public-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem;
-      background: var(--color-offset, #f5f5f5);
-      border-radius: 0.5rem;
-      margin-top: 2rem;
-    }
-    .lfm-public-link p {
-      margin: 0;
-      color: var(--color-text-secondary, #666);
-    }
-  </style>
+  /* Stats grid */
+  .lfm-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-s, 0.75rem);
+  }
+  .lfm-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-s, 0.75rem);
+    background: var(--color-background, #fff);
+    border-radius: var(--border-radius-small, 0.5rem);
+    text-align: center;
+  }
+  .lfm-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent, #d51007);
+  }
+  .lfm-stat-label {
+    font-size: 0.75rem;
+    color: var(--color-on-offset, #666);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 
-  {% if error %}
-    {{ prose({ text: error.message }) }}
-  {% else %}
+  /* Featured track */
+  .lfm-featured {
+    display: flex;
+    gap: 1rem;
+    padding: var(--space-s, 0.75rem);
+    background: var(--color-background, #fff);
+    border-radius: var(--border-radius-small, 0.5rem);
+    align-items: flex-start;
+  }
+  .lfm-featured img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    flex-shrink: 0;
+  }
+  .lfm-featured-info { flex: 1; }
+  .lfm-featured-title {
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .lfm-featured-title:hover { text-decoration: underline; }
+  .lfm-featured-album {
+    margin: 0.25rem 0;
+    color: var(--color-on-offset, #666);
+    font-size: 0.875rem;
+  }
+  .lfm-meta {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--color-on-offset, #666);
+    font-size: 0.75rem;
+  }
+
+  /* Now playing animation */
+  .lfm-playing-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #d51007;
+  }
+  .lfm-bars {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+    height: 16px;
+  }
+  .lfm-bars span {
+    width: 3px;
+    background: currentColor;
+    animation: lfm-bar 0.5s infinite ease-in-out alternate;
+  }
+  .lfm-bars span:nth-child(2) { animation-delay: 0.2s; }
+  .lfm-bars span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes lfm-bar {
+    from { height: 4px; }
+    to { height: 16px; }
+  }
+
+  /* Loved indicator */
+  .lfm-loved {
+    color: #d51007;
+    font-size: 0.875rem;
+  }
+
+  /* List */
+  .lfm-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .lfm-list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-outline-variant, #eee);
+  }
+  .lfm-list-item:last-child { border-bottom: none; }
+  .lfm-list-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    flex-shrink: 0;
+  }
+  .lfm-list-item-placeholder {
+    width: 48px;
+    height: 48px;
+    background: var(--color-outline-variant, #ddd);
+    border-radius: 0.25rem;
+    flex-shrink: 0;
+  }
+  .lfm-list-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .lfm-list-title {
+    display: block;
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lfm-list-title:hover { text-decoration: underline; }
+
+  /* Public link */
+  .lfm-public-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m, 1rem);
+    flex-wrap: wrap;
+  }
+  .lfm-public-link p {
+    margin: 0;
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+  }
+</style>
+
+{% if saved %}
+<div class="lfm-notification lfm-notification--success">
+  {{ __("lastfm.settingsSaved") }}
+</div>
+{% endif %}
+
+{% if synced %}
+<div class="lfm-notification lfm-notification--success">
+  Synced {{ synced }} new scrobbles
+</div>
+{% endif %}
+
+{% if queryError %}
+<div class="lfm-notification lfm-notification--error">
+  {{ queryError }}
+</div>
+{% endif %}
+
+{% if configError %}
+<div class="lfm-notification lfm-notification--error">
+  {{ configError }}
+</div>
+{% endif %}
+
+<div class="lfm-dashboard">
+  {# Settings Section #}
+  <section class="lfm-section">
+    <h2>{{ __("lastfm.settings") }}</h2>
+    <p class="lfm-hint">{{ __("lastfm.settingsHelp") }}</p>
+    <form method="post" action="{{ mountPath }}/settings" class="lfm-form">
+      <div class="lfm-field">
+        <label for="apiKey">{{ __("lastfm.apiKey") }}</label>
+        <span class="lfm-field-hint" id="apiKey-hint">{{ __("lastfm.apiKeyHelp") }}</span>
+        <input type="password" id="apiKey" name="apiKey" value="{{ settings.apiKey }}" aria-describedby="apiKey-hint" placeholder="Your Last.fm API key" autocomplete="off">
+      </div>
+      <div class="lfm-field">
+        <label for="username">{{ __("lastfm.username") }}</label>
+        <span class="lfm-field-hint" id="username-hint">{{ __("lastfm.usernameHelp") }}</span>
+        <input type="text" id="username" name="username" value="{{ settings.username }}" aria-describedby="username-hint" placeholder="Last.fm username">
+      </div>
+      <div>
+        <button type="submit" class="button button--primary">
+          {{ __("lastfm.saveSettings") }}
+        </button>
+      </div>
+    </form>
+  </section>
+
+  {% if not configError %}
     {# Now Playing / Recently Played #}
     {% if nowPlaying %}
     <section class="lfm-section">
@@ -198,7 +311,7 @@
     </section>
     {% endif %}
 
-    {# Quick Stats Summary #}
+    {# Quick Stats #}
     {% if hasStats %}
     <section class="lfm-section">
       <h2>{{ __("lastfm.stats") }}</h2>
@@ -220,9 +333,9 @@
     {% endif %}
 
     {# Recent Scrobbles #}
+    {% if scrobbles and scrobbles.length > 0 %}
     <section class="lfm-section">
       <h2>{{ __("lastfm.scrobbles") }}</h2>
-      {% if scrobbles and scrobbles.length > 0 %}
       <ul class="lfm-list">
         {% for scrobble in scrobbles %}
         <li class="lfm-list-item">
@@ -240,23 +353,16 @@
               {{ scrobble.relativeTime }}
             </small>
           </div>
-          {% if scrobble.status == "now-playing" %}
-          {{ badge({ color: "red", text: __("lastfm.nowPlaying") }) }}
-          {% elif scrobble.status == "recently-played" %}
-          {{ badge({ color: "blue", text: __("lastfm.recentlyPlayed") }) }}
-          {% endif %}
         </li>
         {% endfor %}
       </ul>
-      {% else %}
-      {{ prose({ text: __("lastfm.noRecentPlays") }) }}
-      {% endif %}
     </section>
+    {% endif %}
 
     {# Loved Tracks #}
+    {% if lovedTracks and lovedTracks.length > 0 %}
     <section class="lfm-section">
       <h2>{{ __("lastfm.loved") }}</h2>
-      {% if lovedTracks and lovedTracks.length > 0 %}
       <ul class="lfm-list">
         {% for track in lovedTracks %}
         <li class="lfm-list-item">
@@ -277,19 +383,32 @@
         </li>
         {% endfor %}
       </ul>
-      {% else %}
-      {{ prose({ text: __("lastfm.noLoved") }) }}
-      {% endif %}
+    </section>
+    {% endif %}
+
+    {# Actions #}
+    <section class="lfm-section">
+      <h2>{{ __("lastfm.actions") }}</h2>
+      <div class="button-group">
+        <form method="post" action="{{ mountPath }}/sync" style="display: inline;">
+          <button type="submit" class="button button--primary">
+            {{ __("lastfm.sync") }}
+          </button>
+        </form>
+      </div>
     </section>
 
-    {# Link to public page #}
-    <div class="lfm-public-link">
-      <p>{{ __("lastfm.widget.description") }}</p>
-      {{ button({
-        href: publicUrl,
-        text: __("lastfm.widget.view"),
-        target: "_blank"
-      }) }}
-    </div>
+    {# Public Page Link #}
+    {% if publicUrl %}
+    <section class="lfm-section">
+      <div class="lfm-public-link">
+        <p>{{ __("lastfm.widget.description") }}</p>
+        <a href="{{ publicUrl }}" class="button button--secondary" target="_blank">
+          {{ __("lastfm.widget.view") }}
+        </a>
+      </div>
+    </section>
+    {% endif %}
   {% endif %}
+</div>
 {% endblock %}

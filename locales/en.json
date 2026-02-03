@@ -25,9 +25,19 @@
     "viewStats": "View Statistics",
     "sync": "Sync Now",
     "lastSync": "Last sync",
+    "settings": "Settings",
+    "settingsHelp": "Configure your Last.fm credentials. Saved settings override environment variables.",
+    "apiKey": "API Key",
+    "apiKeyHelp": "Your Last.fm API key (get one at last.fm/api/account/create)",
+    "username": "Username",
+    "usernameHelp": "Last.fm username to fetch scrobbles from",
+    "saveSettings": "Save Settings",
+    "settingsSaved": "Settings saved successfully",
+    "syncSuccess": "Synced %s new scrobbles",
+    "actions": "Actions",
     "error": {
-      "connection": "Could not connect to Last.fm",
-      "noConfig": "Last.fm endpoint not configured correctly"
+      "connection": "Could not connect to Last.fm. Check your API key and username.",
+      "noConfig": "Last.fm API key and username are required. Configure them below."
     },
     "widget": {
       "description": "View full scrobble activity on the public page",

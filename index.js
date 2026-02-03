@@ -69,6 +69,9 @@ export default class LastFmEndpoint {
     // Dashboard overview
     protectedRouter.get("/", dashboardController.get);
 
+    // Save settings
+    protectedRouter.post("/settings", dashboardController.saveSettings);
+
     // Manual sync trigger
     protectedRouter.post("/sync", dashboardController.sync);
 
@@ -92,8 +95,9 @@ export default class LastFmEndpoint {
   init(Indiekit) {
     Indiekit.addEndpoint(this);
 
-    // Add MongoDB collection for scrobbles sync
+    // Add MongoDB collections
     Indiekit.addCollection("scrobbles");
+    Indiekit.addCollection("lastfmMeta");
 
     // Store Last.fm config in application for controller access
     Indiekit.config.application.lastfmConfig = this.options;
