@@ -40,8 +40,8 @@
       "noConfig": "Last.fm API key and username are required. Configure them below."
     },
     "widget": {
-      "description": "View full scrobble activity on the public page",
-      "view": "View Public Page"
+      "description": "View combined listening activity on the public page",
+      "view": "View Listening Page"
     }
   }
 }
