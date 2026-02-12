@@ -1,0 +1,224 @@
+/* Last.fm endpoint styles */
+
+/* Settings form */
+.lastfm-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.lastfm-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.lastfm-field label {
+  font-weight: var(--font-weight-semibold);
+}
+
+.lastfm-field__hint {
+  color: var(--color-text-secondary);
+  font-size: var(--step--1);
+}
+
+.lastfm-field input {
+  appearance: none;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  font-size: var(--step--1);
+  padding: var(--space-2xs) var(--space-s);
+  width: 100%;
+}
+
+.lastfm-field input:focus {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+/* Stats grid */
+.lastfm-stats {
+  display: grid;
+  gap: var(--space-s);
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.lastfm-stat {
+  align-items: center;
+  background: var(--color-offset);
+  border-radius: var(--radius-m);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-s);
+  text-align: center;
+}
+
+.lastfm-stat__value {
+  color: var(--color-accent);
+  font-size: var(--step-2);
+  font-weight: var(--font-weight-bold);
+}
+
+.lastfm-stat__label {
+  color: var(--color-text-secondary);
+  font-size: var(--step--2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Featured track */
+.lastfm-featured {
+  align-items: flex-start;
+  background: var(--color-offset);
+  border-radius: var(--radius-m);
+  display: flex;
+  gap: var(--space-m);
+  padding: var(--space-s);
+}
+
+.lastfm-featured img {
+  border-radius: var(--radius-s);
+  flex-shrink: 0;
+  height: 80px;
+  object-fit: cover;
+  width: 80px;
+}
+
+.lastfm-featured__info {
+  flex: 1;
+}
+
+.lastfm-featured__title {
+  color: inherit;
+  display: block;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.lastfm-featured__title:hover {
+  text-decoration: underline;
+}
+
+.lastfm-featured__album {
+  color: var(--color-text-secondary);
+  font-size: var(--step--1);
+  margin: var(--space-3xs) 0;
+}
+
+.lastfm-meta {
+  color: var(--color-text-secondary);
+  display: flex;
+  font-size: var(--step--2);
+  gap: var(--space-xs);
+}
+
+/* Now playing animation */
+.lastfm-playing {
+  align-items: center;
+  color: #d51007;
+  display: inline-flex;
+  gap: var(--space-xs);
+}
+
+.lastfm-bars {
+  align-items: flex-end;
+  display: flex;
+  gap: 2px;
+  height: 16px;
+}
+
+.lastfm-bars span {
+  animation: lastfm-bar 0.5s infinite ease-in-out alternate;
+  background: currentColor;
+  width: 3px;
+}
+
+.lastfm-bars span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.lastfm-bars span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes lastfm-bar {
+  from { height: 4px; }
+  to { height: 16px; }
+}
+
+/* Loved indicator */
+.lastfm-loved {
+  color: #d51007;
+  font-size: var(--step--1);
+}
+
+/* List */
+.lastfm-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lastfm-list__item {
+  align-items: center;
+  border-block-end: 1px solid var(--color-border);
+  display: flex;
+  gap: var(--space-s);
+  padding: var(--space-s) 0;
+}
+
+.lastfm-list__item:last-child {
+  border-block-end: none;
+}
+
+.lastfm-list__item img {
+  border-radius: var(--radius-s);
+  flex-shrink: 0;
+  height: 48px;
+  object-fit: cover;
+  width: 48px;
+}
+
+.lastfm-list__placeholder {
+  background: var(--color-border);
+  border-radius: var(--radius-s);
+  flex-shrink: 0;
+  height: 48px;
+  width: 48px;
+}
+
+.lastfm-list__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.lastfm-list__title {
+  color: inherit;
+  display: block;
+  font-weight: var(--font-weight-medium);
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lastfm-list__title:hover {
+  text-decoration: underline;
+}
+
+/* Public link */
+.lastfm-public-link {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  justify-content: space-between;
+}
+
+.lastfm-public-link p {
+  color: var(--color-text-secondary);
+  font-size: var(--step--1);
+  margin: 0;
+}
