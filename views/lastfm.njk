@@ -3,17 +3,17 @@
 {% block lastfm %}
   {# Settings Section #}
   {% call section({ title: __("lastfm.settings") }) %}
-    <p class="lastfm-field__hint">{{ __("lastfm.settingsHelp") }}</p>
+    <p class="hint">{{ __("lastfm.settingsHelp") }}</p>
     <form method="post" action="{{ mountPath }}/settings" class="lastfm-form">
       <div class="lastfm-field">
-        <label for="apiKey">{{ __("lastfm.apiKey") }}</label>
-        <span class="lastfm-field__hint" id="apiKey-hint">{{ __("lastfm.apiKeyHelp") }}</span>
-        <input type="password" id="apiKey" name="apiKey" value="{{ settings.apiKey }}" aria-describedby="apiKey-hint" placeholder="Your Last.fm API key" autocomplete="off">
+        <label class="label" for="apiKey">{{ __("lastfm.apiKey") }}</label>
+        <span class="hint" id="apiKey-hint">{{ __("lastfm.apiKeyHelp") }}</span>
+        <input class="input" type="password" id="apiKey" name="apiKey" value="{{ settings.apiKey }}" aria-describedby="apiKey-hint" placeholder="Your Last.fm API key" autocomplete="off">
       </div>
       <div class="lastfm-field">
-        <label for="username">{{ __("lastfm.username") }}</label>
-        <span class="lastfm-field__hint" id="username-hint">{{ __("lastfm.usernameHelp") }}</span>
-        <input type="text" id="username" name="username" value="{{ settings.username }}" aria-describedby="username-hint" placeholder="Last.fm username">
+        <label class="label" for="username">{{ __("lastfm.username") }}</label>
+        <span class="hint" id="username-hint">{{ __("lastfm.usernameHelp") }}</span>
+        <input class="input" type="text" id="username" name="username" value="{{ settings.username }}" aria-describedby="username-hint" placeholder="Last.fm username">
       </div>
       <div>
         {{ button({
