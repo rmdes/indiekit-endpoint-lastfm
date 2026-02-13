@@ -1,0 +1,47 @@
+{
+  "lastfm": {
+    "title": "Last.fm",
+    "scrobbles": "Scrobble-geschiedenis",
+    "loved": "Favoriete nummers",
+    "stats": "Statistieken",
+    "nowPlaying": "Nu aan het spelen",
+    "recentlyPlayed": "Recent afgespeeld",
+    "lastPlayed": "Laatst afgespeeld",
+    "allTime": "Alle tijden",
+    "thisWeek": "Deze week",
+    "thisMonth": "Deze maand",
+    "trends": "Trends",
+    "scrobbleTrend": "Scrobble-trend (30 dagen)",
+    "topArtists": "Topartiesten",
+    "topAlbums": "Topalbums",
+    "plays": "afspelingen",
+    "tracks": "nummers",
+    "artists": "artiesten",
+    "albums": "albums",
+    "scrobbleTime": "Scrobbletijd",
+    "noRecentPlays": "Geen muziek recent gescrobbled",
+    "noLoved": "Nog geen favoriete nummers",
+    "viewAll": "Alles bekijken",
+    "viewStats": "Statistieken bekijken",
+    "sync": "Nu synchroniseren",
+    "lastSync": "Laatste synchronisatie",
+    "settings": "Instellingen",
+    "settingsHelp": "Configureer uw Last.fm-inloggegevens. Opgeslagen instellingen overschrijven omgevingsvariabelen.",
+    "apiKey": "API-sleutel",
+    "apiKeyHelp": "Uw Last.fm API-sleutel (verkrijg er een op last.fm/api/account/create)",
+    "username": "Gebruikersnaam",
+    "usernameHelp": "Last.fm-gebruikersnaam om scrobbles van op te halen",
+    "saveSettings": "Instellingen opslaan",
+    "settingsSaved": "Instellingen succesvol opgeslagen",
+    "syncSuccess": "%s nieuwe scrobbles gesynchroniseerd",
+    "actions": "Acties",
+    "error": {
+      "connection": "Kon geen verbinding maken met Last.fm. Controleer uw API-sleutel en gebruikersnaam.",
+      "noConfig": "Last.fm API-sleutel en gebruikersnaam zijn vereist. Configureer ze hieronder."
+    },
+    "widget": {
+      "description": "Bekijk gecombineerde luisteractiviteit op de openbare pagina",
+      "view": "Luisterpagina bekijken"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "lastfm": {
+    "title": "Last.fm",
+    "scrobbles": "Scrobble 历史",
+    "loved": "喜爱的歌曲",
+    "stats": "统计",
+    "nowPlaying": "正在播放",
+    "recentlyPlayed": "最近播放",
+    "lastPlayed": "上次播放",
+    "allTime": "全部时间",
+    "thisWeek": "本周",
+    "thisMonth": "本月",
+    "trends": "趋势",
+    "scrobbleTrend": "Scrobble 趋势（30天）",
+    "topArtists": "热门艺人",
+    "topAlbums": "热门专辑",
+    "plays": "次播放",
+    "tracks": "首歌曲",
+    "artists": "位艺人",
+    "albums": "张专辑",
+    "scrobbleTime": "Scrobble 时间",
+    "noRecentPlays": "最近没有 scrobble 音乐",
+    "noLoved": "还没有喜爱的歌曲",
+    "viewAll": "查看全部",
+    "viewStats": "查看统计",
+    "sync": "立即同步",
+    "lastSync": "上次同步",
+    "settings": "设置",
+    "settingsHelp": "配置您的 Last.fm 凭据。保存的设置会覆盖环境变量。",
+    "apiKey": "API 密钥",
+    "apiKeyHelp": "您的 Last.fm API 密钥（在 last.fm/api/account/create 获取）",
+    "username": "用户名",
+    "usernameHelp": "要获取 scrobbles 的 Last.fm 用户名",
+    "saveSettings": "保存设置",
+    "settingsSaved": "设置保存成功",
+    "syncSuccess": "已同步 %s 个新 scrobbles",
+    "actions": "操作",
+    "error": {
+      "connection": "无法连接到 Last.fm。请检查您的 API 密钥和用户名。",
+      "noConfig": "需要 Last.fm API 密钥和用户名。请在下方配置。"
+    },
+    "widget": {
+      "description": "在公开页面查看合并的收听活动",
+      "view": "查看收听页面"
+    }
+  }
+}

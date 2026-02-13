@@ -1,0 +1,47 @@
+{
+  "lastfm": {
+    "title": "Last.fm",
+    "scrobbles": "Historique de Scrobble",
+    "loved": "Pistes aimées",
+    "stats": "Statistiques",
+    "nowPlaying": "En cours de lecture",
+    "recentlyPlayed": "Récemment écouté",
+    "lastPlayed": "Dernière écoute",
+    "allTime": "Tous temps",
+    "thisWeek": "Cette semaine",
+    "thisMonth": "Ce mois-ci",
+    "trends": "Tendances",
+    "scrobbleTrend": "Tendance de Scrobble (30 jours)",
+    "topArtists": "Artistes principaux",
+    "topAlbums": "Albums principaux",
+    "plays": "lectures",
+    "tracks": "pistes",
+    "artists": "artistes",
+    "albums": "albums",
+    "scrobbleTime": "Temps de Scrobble",
+    "noRecentPlays": "Aucune musique scrobblée récemment",
+    "noLoved": "Pas encore de pistes aimées",
+    "viewAll": "Voir tout",
+    "viewStats": "Voir les statistiques",
+    "sync": "Synchroniser maintenant",
+    "lastSync": "Dernière synchronisation",
+    "settings": "Paramètres",
+    "settingsHelp": "Configurez vos identifiants Last.fm. Les paramètres enregistrés remplacent les variables d'environnement.",
+    "apiKey": "Clé API",
+    "apiKeyHelp": "Votre clé API Last.fm (obtenez-en une sur last.fm/api/account/create)",
+    "username": "Nom d'utilisateur",
+    "usernameHelp": "Nom d'utilisateur Last.fm pour récupérer les scrobbles",
+    "saveSettings": "Enregistrer les paramètres",
+    "settingsSaved": "Paramètres enregistrés avec succès",
+    "syncSuccess": "%s nouveaux scrobbles synchronisés",
+    "actions": "Actions",
+    "error": {
+      "connection": "Impossible de se connecter à Last.fm. Vérifiez votre clé API et votre nom d'utilisateur.",
+      "noConfig": "La clé API et le nom d'utilisateur Last.fm sont requis. Configurez-les ci-dessous."
+    },
+    "widget": {
+      "description": "Afficher l'activité d'écoute combinée sur la page publique",
+      "view": "Afficher la page d'écoute"
+    }
+  }
+}

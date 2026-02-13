@@ -1,0 +1,47 @@
+{
+  "lastfm": {
+    "title": "Last.fm",
+    "scrobbles": "Scrobble-historik",
+    "loved": "Älskade spår",
+    "stats": "Statistik",
+    "nowPlaying": "Spelar nu",
+    "recentlyPlayed": "Nyligen spelad",
+    "lastPlayed": "Senast spelad",
+    "allTime": "Alla tider",
+    "thisWeek": "Denna vecka",
+    "thisMonth": "Denna månad",
+    "trends": "Trender",
+    "scrobbleTrend": "Scrobble-trend (30 dagar)",
+    "topArtists": "Toppartister",
+    "topAlbums": "Toppalbum",
+    "plays": "spelningar",
+    "tracks": "spår",
+    "artists": "artister",
+    "albums": "album",
+    "scrobbleTime": "Scrobbletid",
+    "noRecentPlays": "Ingen musik scrobblad nyligen",
+    "noLoved": "Inga älskade spår ännu",
+    "viewAll": "Visa alla",
+    "viewStats": "Visa statistik",
+    "sync": "Synkronisera nu",
+    "lastSync": "Senaste synkronisering",
+    "settings": "Inställningar",
+    "settingsHelp": "Konfigurera dina Last.fm-uppgifter. Sparade inställningar åsidosätter miljövariabler.",
+    "apiKey": "API-nyckel",
+    "apiKeyHelp": "Din Last.fm API-nyckel (skaffa en på last.fm/api/account/create)",
+    "username": "Användarnamn",
+    "usernameHelp": "Last.fm-användarnamn att hämta scrobbles från",
+    "saveSettings": "Spara inställningar",
+    "settingsSaved": "Inställningar sparade",
+    "syncSuccess": "%s nya scrobbles synkroniserade",
+    "actions": "Åtgärder",
+    "error": {
+      "connection": "Kunde inte ansluta till Last.fm. Kontrollera din API-nyckel och användarnamn.",
+      "noConfig": "Last.fm API-nyckel och användarnamn krävs. Konfigurera dem nedan."
+    },
+    "widget": {
+      "description": "Visa kombinerad lyssningsaktivitet på den offentliga sidan",
+      "view": "Visa lyssningssida"
+    }
+  }
+}

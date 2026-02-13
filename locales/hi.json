@@ -1,0 +1,47 @@
+{
+  "lastfm": {
+    "title": "Last.fm",
+    "scrobbles": "Scrobble इतिहास",
+    "loved": "पसंदीदा ट्रैक",
+    "stats": "आंकड़े",
+    "nowPlaying": "अभी चल रहा है",
+    "recentlyPlayed": "हाल ही में चलाया गया",
+    "lastPlayed": "अंतिम बार चलाया गया",
+    "allTime": "सभी समय",
+    "thisWeek": "इस सप्ताह",
+    "thisMonth": "इस महीने",
+    "trends": "रुझान",
+    "scrobbleTrend": "Scrobble रुझान (30 दिन)",
+    "topArtists": "शीर्ष कलाकार",
+    "topAlbums": "शीर्ष एल्बम",
+    "plays": "बार चलाया",
+    "tracks": "ट्रैक",
+    "artists": "कलाकार",
+    "albums": "एल्बम",
+    "scrobbleTime": "Scrobble समय",
+    "noRecentPlays": "हाल ही में कोई संगीत scrobble नहीं किया गया",
+    "noLoved": "अभी तक कोई पसंदीदा ट्रैक नहीं",
+    "viewAll": "सभी देखें",
+    "viewStats": "आंकड़े देखें",
+    "sync": "अभी समन्वयित करें",
+    "lastSync": "अंतिम समन्वयन",
+    "settings": "सेटिंग्स",
+    "settingsHelp": "अपने Last.fm क्रेडेंशियल कॉन्फ़िगर करें। सहेजी गई सेटिंग्स पर्यावरण चर को ओवरराइड करती हैं।",
+    "apiKey": "API कुंजी",
+    "apiKeyHelp": "आपकी Last.fm API कुंजी (last.fm/api/account/create पर एक प्राप्त करें)",
+    "username": "उपयोगकर्ता नाम",
+    "usernameHelp": "Last.fm उपयोगकर्ता नाम जिससे scrobbles लाना है",
+    "saveSettings": "सेटिंग्स सहेजें",
+    "settingsSaved": "सेटिंग्स सफलतापूर्वक सहेजी गईं",
+    "syncSuccess": "%s नए scrobbles समन्वयित किए गए",
+    "actions": "क्रियाएं",
+    "error": {
+      "connection": "Last.fm से कनेक्ट नहीं हो सका। अपनी API कुंजी और उपयोगकर्ता नाम जांचें।",
+      "noConfig": "Last.fm API कुंजी और उपयोगकर्ता नाम आवश्यक हैं। उन्हें नीचे कॉन्फ़िगर करें।"
+    },
+    "widget": {
+      "description": "सार्वजनिक पृष्ठ पर संयुक्त सुनने की गतिविधि देखें",
+      "view": "सुनने का पृष्ठ देखें"
+    }
+  }
+}

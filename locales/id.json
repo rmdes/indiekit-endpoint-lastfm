@@ -1,0 +1,47 @@
+{
+  "lastfm": {
+    "title": "Last.fm",
+    "scrobbles": "Riwayat Scrobble",
+    "loved": "Lagu Favorit",
+    "stats": "Statistik",
+    "nowPlaying": "Sedang Diputar",
+    "recentlyPlayed": "Baru Diputar",
+    "lastPlayed": "Terakhir Diputar",
+    "allTime": "Sepanjang Waktu",
+    "thisWeek": "Minggu Ini",
+    "thisMonth": "Bulan Ini",
+    "trends": "Tren",
+    "scrobbleTrend": "Tren Scrobble (30 hari)",
+    "topArtists": "Artis Teratas",
+    "topAlbums": "Album Teratas",
+    "plays": "pemutaran",
+    "tracks": "lagu",
+    "artists": "artis",
+    "albums": "album",
+    "scrobbleTime": "Waktu Scrobble",
+    "noRecentPlays": "Tidak ada musik yang di-scrobble baru-baru ini",
+    "noLoved": "Belum ada lagu favorit",
+    "viewAll": "Lihat Semua",
+    "viewStats": "Lihat Statistik",
+    "sync": "Sinkronkan Sekarang",
+    "lastSync": "Sinkronisasi terakhir",
+    "settings": "Pengaturan",
+    "settingsHelp": "Konfigurasi kredensial Last.fm Anda. Pengaturan yang disimpan menimpa variabel lingkungan.",
+    "apiKey": "Kunci API",
+    "apiKeyHelp": "Kunci API Last.fm Anda (dapatkan di last.fm/api/account/create)",
+    "username": "Nama Pengguna",
+    "usernameHelp": "Nama pengguna Last.fm untuk mengambil scrobble",
+    "saveSettings": "Simpan Pengaturan",
+    "settingsSaved": "Pengaturan berhasil disimpan",
+    "syncSuccess": "%s scrobble baru disinkronkan",
+    "actions": "Tindakan",
+    "error": {
+      "connection": "Tidak dapat terhubung ke Last.fm. Periksa kunci API dan nama pengguna Anda.",
+      "noConfig": "Kunci API dan nama pengguna Last.fm diperlukan. Konfigurasikan di bawah ini."
+    },
+    "widget": {
+      "description": "Lihat aktivitas mendengarkan gabungan di halaman publik",
+      "view": "Lihat Halaman Mendengarkan"
+    }
+  }
+}

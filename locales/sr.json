@@ -1,0 +1,47 @@
+{
+  "lastfm": {
+    "title": "Last.fm",
+    "scrobbles": "Историја Scrobble",
+    "loved": "Омиљене песме",
+    "stats": "Статистике",
+    "nowPlaying": "Тренутно свира",
+    "recentlyPlayed": "Недавно пуштено",
+    "lastPlayed": "Последње пуштено",
+    "allTime": "Свих времена",
+    "thisWeek": "Ове недеље",
+    "thisMonth": "Овог месеца",
+    "trends": "Трендови",
+    "scrobbleTrend": "Тренд Scrobble (30 дана)",
+    "topArtists": "Најбољи извођачи",
+    "topAlbums": "Најбољи албуми",
+    "plays": "репродукција",
+    "tracks": "песама",
+    "artists": "извођача",
+    "albums": "албума",
+    "scrobbleTime": "Време Scrobble",
+    "noRecentPlays": "Недавно није scrobbled музика",
+    "noLoved": "Још нема омиљених песама",
+    "viewAll": "Прикажи све",
+    "viewStats": "Прикажи статистике",
+    "sync": "Синхронизуј сада",
+    "lastSync": "Последња синхронизација",
+    "settings": "Подешавања",
+    "settingsHelp": "Конфигуришите своје Last.fm акредитиве. Сачувана подешавања замењују променљиве окружења.",
+    "apiKey": "API кључ",
+    "apiKeyHelp": "Ваш Last.fm API кључ (набавите га на last.fm/api/account/create)",
+    "username": "Корисничко име",
+    "usernameHelp": "Last.fm корисничко име за преузимање scrobble",
+    "saveSettings": "Сачувај подешавања",
+    "settingsSaved": "Подешавања успешно сачувана",
+    "syncSuccess": "%s нових scrobble синхронизовано",
+    "actions": "Акције",
+    "error": {
+      "connection": "Није могуће повезати се са Last.fm. Проверите свој API кључ и корисничко име.",
+      "noConfig": "Last.fm API кључ и корисничко име су неопходни. Конфигуришите их испод."
+    },
+    "widget": {
+      "description": "Погледајте комбиновану активност слушања на јавној страници",
+      "view": "Погледај страницу слушања"
+    }
+  }
+}
