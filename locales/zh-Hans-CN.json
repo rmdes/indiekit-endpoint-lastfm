@@ -40,6 +40,7 @@
       "noConfig": "需要 Last.fm API 密钥和用户名。请在下方配置。"
     },
     "widget": {
+      "title": "Public Page",
       "description": "在公开页面查看合并的收听活动",
       "view": "查看收听页面"
     }

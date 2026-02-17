@@ -40,6 +40,7 @@
       "noConfig": "Kunci API dan nama pengguna Last.fm diperlukan. Konfigurasikan di bawah ini."
     },
     "widget": {
+      "title": "Public Page",
       "description": "Lihat aktivitas mendengarkan gabungan di halaman publik",
       "view": "Lihat Halaman Mendengarkan"
     }

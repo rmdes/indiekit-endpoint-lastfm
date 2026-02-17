@@ -40,6 +40,7 @@
       "noConfig": "Last.fm API-sleutel en gebruikersnaam zijn vereist. Configureer ze hieronder."
     },
     "widget": {
+      "title": "Public Page",
       "description": "Bekijk gecombineerde luisteractiviteit op de openbare pagina",
       "view": "Luisterpagina bekijken"
     }

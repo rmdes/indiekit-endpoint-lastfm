@@ -40,6 +40,7 @@
       "noConfig": "Last.fm API key and username are required. Configure them below."
     },
     "widget": {
+      "title": "Public Page",
       "description": "View combined listening activity on the public page",
       "view": "View Listening Page"
     }

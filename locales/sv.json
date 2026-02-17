@@ -40,6 +40,7 @@
       "noConfig": "Last.fm API-nyckel och användarnamn krävs. Konfigurera dem nedan."
     },
     "widget": {
+      "title": "Public Page",
       "description": "Visa kombinerad lyssningsaktivitet på den offentliga sidan",
       "view": "Visa lyssningssida"
     }

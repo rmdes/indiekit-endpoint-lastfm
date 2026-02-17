@@ -40,6 +40,7 @@
       "noConfig": "Wymagany jest klucz API i nazwa użytkownika Last.fm. Skonfiguruj je poniżej."
     },
     "widget": {
+      "title": "Public Page",
       "description": "Zobacz połączoną aktywność odsłuchu na stronie publicznej",
       "view": "Zobacz stronę odsłuchu"
     }

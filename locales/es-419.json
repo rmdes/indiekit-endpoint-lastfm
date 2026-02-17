@@ -40,6 +40,7 @@
       "noConfig": "Se requieren la clave API y el nombre de usuario de Last.fm. Configúralos a continuación."
     },
     "widget": {
+      "title": "Public Page",
       "description": "Ver la actividad de escucha combinada en la página pública",
       "view": "Ver página de escucha"
     }

@@ -40,6 +40,7 @@
       "noConfig": "Last.fm-API-Schlüssel und Benutzername sind erforderlich. Konfigurieren Sie sie unten."
     },
     "widget": {
+      "title": "Public Page",
       "description": "Kombinierte Höraktivität auf der öffentlichen Seite anzeigen",
       "view": "Hörseite anzeigen"
     }
