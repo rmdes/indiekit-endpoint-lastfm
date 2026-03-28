@@ -459,6 +459,15 @@ const date = parseDate(track.date);  // Handles Last.fm date object or ISO strin
 - [ ] Error states render correctly (no API key, API failure, 503 for empty cache)
 - [ ] Transient Last.fm errors (rate limits) return 503 with retry header
 
+## Startup Gate
+
+This plugin uses `@rmdes/indiekit-startup-gate` to defer background tasks until the host signals readiness (after Eleventy build completes). This prevents resource contention during the build.
+
+**Deferred:** `startSync()` — periodic Last.fm scrobble sync
+**Immediate:** Routes, indexes, collection registration
+
+See workspace CLAUDE.md for the full startup-gate pattern. Any new background tasks added to this plugin MUST be wrapped in `waitForReady()`.
+
 ## Changelog Endpoint Integration
 
 This plugin is designed to integrate with the `/listening` page on the Eleventy frontend, which aggregates listening activity from multiple sources (Last.fm, Funkwhale, etc.).
