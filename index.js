@@ -8,6 +8,7 @@ import { lovedController } from "./lib/controllers/loved.js";
 import { statsController } from "./lib/controllers/stats.js";
 import { nowPlayingController } from "./lib/controllers/now-playing.js";
 import { startSync } from "./lib/sync.js";
+import { waitForReady } from "@rmdes/indiekit-startup-gate";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -108,7 +109,14 @@ export default class LastFmEndpoint {
 
     // Start background sync if database is available
     if (Indiekit.config.application.mongodbUrl) {
-      startSync(Indiekit, this.options);
+      this._stopGate = waitForReady(
+        () => startSync(Indiekit, this.options),
+        { label: "Last.fm" },
+      );
     }
+  }
+
+  destroy() {
+    this._stopGate?.();
   }
 }
